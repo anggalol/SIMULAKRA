@@ -1,0 +1,27 @@
+﻿// Untuk meload dokumen pdf hanya satu halaman
+pdfViewer1.Document = PdfRangeDocument.FromDocument(PdfDocument.Load("D:\\problem.pdf"), 2, 2);
+
+-----------------------------------------------------------------------------------------------------------------
+
+// Untuk serialisasi/deserialisasi interface
+QuestionCollection col = new QuestionCollection
+{
+    new EssayQuestion() { QuestionId = 1, Score = 2.5f },
+    new MultipleChoiceQuestion() { QuestionId = 2, Score = 2.9f, AnswerOptions = new Options(1, 0) },
+    new ShortEntryQuestion() { QuestionId = 3, Score = 3f },
+    new ShortEntryQuestion() { QuestionId = 4, Score = 3f },
+    new EssayQuestion() { QuestionId = 5, Score = 2.5f }
+};
+
+QuestionCollectionSerializer ser = new QuestionCollectionSerializer("D:\\ser.txt");
+QuestionCollection result = (QuestionCollection)ser.DeserializeInterface();
+
+-----------------------------------------------------------------------------------------------------------------
+
+// Untuk aktivasikan instance of class
+StreamReader sr = new StreamReader("D:\\testact.txt");
+Type type = Type.GetType(sr.ReadLine());
+Biji b = (Biji)Activator.CreateInstance(type);
+float h = b.CC(8);
+
+sr.Close();

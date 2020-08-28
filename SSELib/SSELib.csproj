@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props')" />
+  <Import Project="..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA3EA962-B771-4E05-8CE8-305E3B5208A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSELib</RootNamespace>
+    <AssemblyName>SSELib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.13.8.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.13.8\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AKMSimulation.cs" />
+    <Compile Include="AnswerBox\AnswerBoxCollection.cs" />
+    <Compile Include="AnswerBox\AnswersChangedEvent.cs" />
+    <Compile Include="AnswerBox\DoubtCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AnswerBox\DoubtCheckBox.Designer.cs">
+      <DependentUpon>DoubtCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerBox\IAnswerBox.cs" />
+    <Compile Include="AnswerBox\MultipleAnswerAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AnswerBox\MultipleAnswerAnswerBox.Designer.cs">
+      <DependentUpon>MultipleAnswerAnswerBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerBox\MultipleChoiceAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AnswerBox\MultipleChoiceAnswerBox.Designer.cs">
+      <DependentUpon>MultipleChoiceAnswerBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerBox\RadioButtonList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AnswerBox\RadioButtonList.Designer.cs">
+      <DependentUpon>RadioButtonList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerBox\TrueOrFalseAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AnswerBox\TrueOrFalseAnswerBox.Designer.cs">
+      <DependentUpon>TrueOrFalseAnswerBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerKey\AnswerKeys.cs" />
+    <Compile Include="AnswerKey\Key.cs" />
+    <Compile Include="Answer\AnswersCollection.cs" />
+    <Compile Include="Answer\AnswersCollectionSerializer.cs" />
+    <Compile Include="Answer\AnswersSerializerHelper.cs" />
+    <Compile Include="Answer\CausalityAnswers.cs" />
+    <Compile Include="Answer\DropdownAnswers.cs" />
+    <Compile Include="Answer\EssayAnswers.cs" />
+    <Compile Include="Answer\IAnswers.cs" />
+    <Compile Include="Answer\MultipleAnswerAnswers.cs" />
+    <Compile Include="Answer\MultipleChoiceAnswers.cs" />
+    <Compile Include="Answer\MultiTabAnswers.cs" />
+    <Compile Include="Answer\ShortEntryAnswers.cs" />
+    <Compile Include="Answer\TrueOrFalseAnswers.cs" />
+    <Compile Include="CustomSimulation.cs" />
+    <Compile Include="IGenericSerialization.cs" />
+    <Compile Include="InstanceFactory.cs" />
+    <Compile Include="InvalidQuestionTypeException.cs" />
+    <Compile Include="ISimulationType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question\CausalityQuestion.cs" />
+    <Compile Include="Question\DropdownQuestion.cs" />
+    <Compile Include="Question\EssayQuestion.cs" />
+    <Compile Include="Question\MultipleAnswerQuestion.cs" />
+    <Compile Include="Question\MultipleChoiceQuestion.cs" />
+    <Compile Include="Question\MultiTabQuestion.cs" />
+    <Compile Include="Question\Options.cs" />
+    <Compile Include="Question\BaseAxisEnum.cs" />
+    <Compile Include="Question\IQuestion.cs" />
+    <Compile Include="Question\QuestionCollection.cs" />
+    <Compile Include="Question\QuestionCollectionSerializer.cs" />
+    <Compile Include="Question\ShortEntryQuestion.cs" />
+    <Compile Include="Question\TrueOrFalseQuestion.cs" />
+    <Compile Include="Scoring\IQuestionScoring.cs" />
+    <Compile Include="Scoring\ITotalScore.cs" />
+    <Compile Include="Scoring\MultipleChoiceScoring.cs" />
+    <Compile Include="Scoring\UNBKScoring.cs" />
+    <Compile Include="SerializerHelper.cs" />
+    <Compile Include="SimulationHeader.cs" />
+    <Compile Include="SimulationTypeBundle.cs" />
+    <Compile Include="SimulationTypeData.cs" />
+    <Compile Include="SimulationTypeEnum.cs" />
+    <Compile Include="UNBKSimulation.cs" />
+    <Compile Include="UTBKSimulation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Code.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AnswerBox\MultipleAnswerAnswerBox.resx">
+      <DependentUpon>MultipleAnswerAnswerBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnswerBox\MultipleChoiceAnswerBox.resx">
+      <DependentUpon>MultipleChoiceAnswerBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnswerBox\TrueOrFalseAnswerBox.resx">
+      <DependentUpon>TrueOrFalseAnswerBox.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86.v8-xfa.props'))" />
+    <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
+  </Target>
+</Project>

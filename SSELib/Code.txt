@@ -1,0 +1,103 @@
+﻿using System.Xml.Serialization;
+
+namespace SSELib.Question
+{
+    public class CausalityQuestion : IQuestion
+    {
+        [XmlAttribute("id")]
+        public int Id { get; set; }
+
+        public Options AnswerOptions => new Options(2, 3);
+
+        public int MustAnsweredOptions => 3;
+
+        public BaseAxis BaseAxis => BaseAxis.X;
+
+        public float Score { get; set; }
+    }
+}
+
+------------------------------------------------------------
+
+using System.Xml.Serialization;
+
+namespace SSELib.Question
+{
+    public class DropDownQuestion : IQuestion
+    {
+        [XmlAttribute("id")]
+        public int Id { get; set; }
+
+        public Options AnswerOptions { get; set; }
+
+        public int MustAnsweredOptions => 1;
+
+        public BaseAxis BaseAxis => BaseAxis.Y;
+
+        public float Score { get; set; }
+    }
+}
+
+--------------------------------------------------------------
+
+using System.Xml.Serialization;
+
+namespace SSELib.Question
+{
+    public class MultiTabQuestion : IQuestion
+    {
+        [XmlAttribute("id")]
+        public int Id { get; set; }
+
+        public Options AnswerOptions { get; set; }
+
+        public int MustAnsweredOptions => AnswerOptions.X + AnswerOptions.Y;
+
+        public BaseAxis BaseAxis { get; set; }
+
+        public float Score { get; set; }
+    }
+}
+
+--------------------------------------------------------------
+
+using System.Xml.Serialization;
+
+namespace SSELib.Question
+{
+    public class TabularQuestion : IQuestion
+    {
+        [XmlAttribute("id")]
+        public int Id { get; set; }
+
+        public Options AnswerOptions { get; set; }
+
+        public int MustAnsweredOptions { get; set; }
+
+        public BaseAxis BaseAxis => BaseAxis.XY;
+
+        public float Score { get; set; }
+    }
+}
+
+
+------------------------------------------------------------
+
+using System.Xml.Serialization;
+
+namespace SSELib.Question
+{
+    public class TrueOrFalseQuestion : IQuestion
+    {
+        [XmlAttribute("id")]
+        public int Id { get; set; }
+
+        public Options AnswerOptions => this.BaseAxis == BaseAxis.X ? new Options(0, 2) : new Options(2, 0);
+
+        public int MustAnsweredOptions => 1;
+
+        public BaseAxis BaseAxis { get; set; }
+
+        public float Score { get; set; }
+    }
+}
