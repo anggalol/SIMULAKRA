@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Xml.Serialization;
+using System.Windows.Forms;
 using SSELib.AnswerKey;
 using SSELib.Answer;
+using SSELib.AnswerBox;
 
 namespace SSELib.Question
 {
@@ -37,13 +38,15 @@ namespace SSELib.Question
             get => _keys;
             set
             {
-                if (value.Length != MustAnsweredOptions)
+                if (value.KeyCount != MustAnsweredOptions)
                     throw new ArgumentException("The length of the answer keys must be the same as the value of MustAnsweredOptions.");
 
                 _keys = value;
             }
         }
 
-        public Type AnswersType => throw new NotImplementedException();
+        public IAnswers GetAnswers() => new CausalityAnswers();
+
+        public IAnswerBox AnswerBox => throw new NotImplementedException();
     }
 }

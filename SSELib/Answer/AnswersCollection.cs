@@ -18,7 +18,7 @@ namespace SSELib.Answer
         {
             foreach (int qid in qc.Keys)
             {
-                IAnswers ans = (IAnswers)InstanceFactory.CreateInstance(qc[qid].AnswersType);
+                IAnswers ans = qc[qid].GetAnswers();
                 ans.Length = qc[qid].MustAnsweredOptions;
                 ans.IsDoubt = false;
                 foreach (int aid in qc[qid].AnswerKeys.IDs)

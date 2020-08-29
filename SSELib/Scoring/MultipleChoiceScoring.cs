@@ -10,7 +10,7 @@ namespace SSELib.Scoring
         public float CalculateScore(IQuestion question, IAnswers answer)
         {
             MultipleChoiceQuestion mcq = question as MultipleChoiceQuestion;
-            if (mcq.AnswerKeys.Length != answer.Length)
+            if (mcq.AnswerKeys.KeyCount != answer.Length)
                 throw new ArgumentException("The length of the answer keys must same as the length of the answers.");
 
             int correct = 0;
@@ -20,7 +20,7 @@ namespace SSELib.Scoring
                     correct++;
             }
 
-            return (float)correct / mcq.AnswerKeys.Length * mcq.Score;
+            return (float)correct / mcq.AnswerKeys.KeyCount * mcq.Score;
         }
     }
 }

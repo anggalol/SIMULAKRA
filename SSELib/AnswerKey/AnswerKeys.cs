@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -17,24 +16,19 @@ namespace SSELib.AnswerKey
             _keysl = new SortedList<int, Key>();
         }
 
-        public int Length { get; set; }
+        public int KeyCount => _keysl.Count;
 
-        [XmlIgnore]
         public IList<int> IDs => _keysl.Keys;
+
+        public void Add(int id, Key key)
+        {
+            _keysl.Add(id, key);
+        }
 
         public Key this[int id]
         {
             get => _keysl[id];
-            set
-            {
-                if (_keysl.Count == Length)
-                    throw new IndexOutOfRangeException();
-
-                if (!_keysl.Keys.Contains(id))
-                    _keysl.Add(id, value);
-                else
-                    _keysl[id] = value;
-            }
+            set => _keysl[id] = value;
         }
         
         public XmlSchema GetSchema()
@@ -44,8 +38,6 @@ namespace SSELib.AnswerKey
 
         public void ReadXml(XmlReader reader)
         {
-            Length = int.Parse(reader.GetAttribute("length"));
-
             reader.ReadStartElement(nameof(AnswerKeys));
             while (reader.IsStartElement(nameof(Key)))
             {
@@ -61,8 +53,6 @@ namespace SSELib.AnswerKey
 
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteAttributeString("length", Length.ToString());
-
             foreach (KeyValuePair<int, Key> keykv in _keysl)
             {
                 writer.WriteStartElement(nameof(Key));

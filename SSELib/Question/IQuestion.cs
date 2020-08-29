@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Windows.Forms;
 using SSELib.AnswerKey;
+using SSELib.Answer;
+using SSELib.AnswerBox;
 
 namespace SSELib.Question
 {
@@ -44,11 +46,8 @@ namespace SSELib.Question
         /// </summary>
         AnswerKeys AnswerKeys { get; set; }
 
-        /// <summary>
-        /// Tipe kelas jawaban yang digunakan untuk menuliskan jawaban peserta.
-        /// </summary>
-        Type AnswersType { get; }
+        IAnswers GetAnswers();
 
-        // implementasikan AnswerBox disini
+        IAnswerBox AnswerBox { get; }
     }
 }
