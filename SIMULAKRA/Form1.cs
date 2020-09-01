@@ -12,7 +12,7 @@ using PdfiumViewer;
 using MetroFramework.Forms;
 using Ionic.Zip;
 using SSELib.Question;
-using SSELib;
+using SSELib.QnA.Answer;
 
 namespace SIMULAKRA
 {
@@ -21,6 +21,10 @@ namespace SIMULAKRA
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

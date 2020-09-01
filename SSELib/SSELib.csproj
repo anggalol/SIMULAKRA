@@ -55,9 +55,15 @@
     <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
       <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
     </Reference>
+    <Reference Include="Polenter.SharpSerializer, Version=2.20.0.0, Culture=neutral, PublicKeyToken=8f4f20011571ee5f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpSerializer.2.20\lib\net20\Polenter.SharpSerializer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,102 +73,91 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AKMSimulation.cs" />
-    <Compile Include="AnswerBox\AnswerBoxCollection.cs" />
-    <Compile Include="AnswerBox\AnswersChangedEvent.cs" />
-    <Compile Include="AnswerBox\DoubtCheckBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AnswerBox\DoubtCheckBox.Designer.cs">
-      <DependentUpon>DoubtCheckBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AnswerBox\IAnswerBox.cs" />
-    <Compile Include="AnswerBox\MultipleAnswerAnswerBox.cs">
+    <Compile Include="CustomSerializationAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QnA\AKMSimulation.cs" />
+    <Compile Include="QnA\AnswerBox\AnswerBoxElementSizeEnum.cs" />
+    <Compile Include="QnA\AnswerBox\AnswerBoxUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AnswerBox\MultipleAnswerAnswerBox.Designer.cs">
+    <Compile Include="QnA\AnswerBox\AnswersChangedEvent.cs" />
+    <Compile Include="QnA\AnswerBox\EssayAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QnA\AnswerBox\EssayAnswerBox.Designer.cs">
+      <DependentUpon>EssayAnswerBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QnA\AnswerBox\MultipleAnswerAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QnA\AnswerBox\MultipleAnswerAnswerBox.Designer.cs">
       <DependentUpon>MultipleAnswerAnswerBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnswerBox\MultipleChoiceAnswerBox.cs">
+    <Compile Include="QnA\AnswerBox\MultipleChoiceAnswerBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AnswerBox\MultipleChoiceAnswerBox.Designer.cs">
+    <Compile Include="QnA\AnswerBox\MultipleChoiceAnswerBox.Designer.cs">
       <DependentUpon>MultipleChoiceAnswerBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnswerBox\RadioButtonList.cs">
+    <Compile Include="QnA\AnswerBox\RadioButtonListBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="AnswerBox\RadioButtonList.Designer.cs">
-      <DependentUpon>RadioButtonList.cs</DependentUpon>
+    <Compile Include="QnA\AnswerBox\RadioButtonListBox.Designer.cs">
+      <DependentUpon>RadioButtonListBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnswerBox\TrueOrFalseAnswerBox.cs">
+    <Compile Include="QnA\AnswerBox\ShortEntryAnswerBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AnswerBox\TrueOrFalseAnswerBox.Designer.cs">
-      <DependentUpon>TrueOrFalseAnswerBox.cs</DependentUpon>
+    <Compile Include="QnA\AnswerBox\ShortEntryAnswerBox.Designer.cs">
+      <DependentUpon>ShortEntryAnswerBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="AnswerKey\AnswerKeys.cs" />
-    <Compile Include="AnswerKey\Key.cs" />
-    <Compile Include="Answer\AnswersCollection.cs" />
-    <Compile Include="Answer\AnswersCollectionSerializer.cs" />
-    <Compile Include="Answer\AnswersSerializerHelper.cs" />
-    <Compile Include="Answer\CausalityAnswers.cs" />
-    <Compile Include="Answer\DropdownAnswers.cs" />
-    <Compile Include="Answer\EssayAnswers.cs" />
-    <Compile Include="Answer\IAnswers.cs" />
-    <Compile Include="Answer\MultipleAnswerAnswers.cs" />
-    <Compile Include="Answer\MultipleChoiceAnswers.cs" />
-    <Compile Include="Answer\MultiTabAnswers.cs" />
-    <Compile Include="Answer\ShortEntryAnswers.cs" />
-    <Compile Include="Answer\TrueOrFalseAnswers.cs" />
-    <Compile Include="CustomSimulation.cs" />
-    <Compile Include="IGenericSerialization.cs" />
-    <Compile Include="InstanceFactory.cs" />
-    <Compile Include="InvalidQuestionTypeException.cs" />
-    <Compile Include="ISimulationType.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question\CausalityQuestion.cs" />
-    <Compile Include="Question\DropdownQuestion.cs" />
-    <Compile Include="Question\EssayQuestion.cs" />
-    <Compile Include="Question\MultipleAnswerQuestion.cs" />
-    <Compile Include="Question\MultipleChoiceQuestion.cs" />
-    <Compile Include="Question\MultiTabQuestion.cs" />
-    <Compile Include="Question\Options.cs" />
-    <Compile Include="Question\BaseAxisEnum.cs" />
-    <Compile Include="Question\IQuestion.cs" />
-    <Compile Include="Question\QuestionCollection.cs" />
-    <Compile Include="Question\QuestionCollectionSerializer.cs" />
-    <Compile Include="Question\ShortEntryQuestion.cs" />
-    <Compile Include="Question\TrueOrFalseQuestion.cs" />
-    <Compile Include="Scoring\IQuestionScoring.cs" />
-    <Compile Include="Scoring\ITotalScore.cs" />
-    <Compile Include="Scoring\MultipleChoiceScoring.cs" />
-    <Compile Include="Scoring\UNBKScoring.cs" />
-    <Compile Include="SerializerHelper.cs" />
-    <Compile Include="SimulationHeader.cs" />
-    <Compile Include="SimulationTypeBundle.cs" />
-    <Compile Include="SimulationTypeData.cs" />
-    <Compile Include="SimulationTypeEnum.cs" />
-    <Compile Include="UNBKSimulation.cs" />
-    <Compile Include="UTBKSimulation.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Code.txt" />
+    <Compile Include="QnA\Answer\AnswersCollection.cs" />
+    <Compile Include="QnA\Answer\IAnswers.cs" />
+    <Compile Include="QnA\Answer\MultipleAnswerAnswers.cs" />
+    <Compile Include="QnA\CustomSimulation.cs" />
+    <Compile Include="QnA\InstanceFactory.cs" />
+    <Compile Include="QnA\InvalidQuestionTypeException.cs" />
+    <Compile Include="QnA\ISimulationType.cs" />
+    <Compile Include="QnA\Question\CausalityQuestion.cs" />
+    <Compile Include="QnA\Question\DropdownQuestion.cs" />
+    <Compile Include="QnA\Question\EssayQuestion.cs" />
+    <Compile Include="QnA\Question\MultipleChoiceQuestion.cs" />
+    <Compile Include="QnA\Question\MultiTabQuestion.cs" />
+    <Compile Include="QnA\Question\QSH.cs" />
+    <Compile Include="QnA\Question\QuestionCollection.cs" />
+    <Compile Include="QnA\Question\AnswerKeys.cs" />
+    <Compile Include="QnA\Question\BaseAxisEnum.cs" />
+    <Compile Include="QnA\Question\IQuestion.cs" />
+    <Compile Include="QnA\Question\Key.cs" />
+    <Compile Include="QnA\Question\MultipleAnswerQuestion.cs" />
+    <Compile Include="QnA\Question\Options.cs" />
+    <Compile Include="QnA\Question\ShortEntryQuestion.cs" />
+    <Compile Include="QnA\Question\TrueOrFalseQuestion.cs" />
+    <Compile Include="QnA\SerializerHelper.cs" />
+    <Compile Include="QnA\SimulationHeader.cs" />
+    <Compile Include="QnA\SimulationTypeBundle.cs" />
+    <Compile Include="QnA\SimulationTypeData.cs" />
+    <Compile Include="QnA\UNBKSimulation.cs" />
+    <Compile Include="QnA\UTBKSimulation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AnswerBox\MultipleAnswerAnswerBox.resx">
+    <EmbeddedResource Include="QnA\AnswerBox\EssayAnswerBox.resx">
+      <DependentUpon>EssayAnswerBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QnA\AnswerBox\MultipleAnswerAnswerBox.resx">
       <DependentUpon>MultipleAnswerAnswerBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AnswerBox\MultipleChoiceAnswerBox.resx">
+    <EmbeddedResource Include="QnA\AnswerBox\MultipleChoiceAnswerBox.resx">
       <DependentUpon>MultipleChoiceAnswerBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AnswerBox\TrueOrFalseAnswerBox.resx">
-      <DependentUpon>TrueOrFalseAnswerBox.cs</DependentUpon>
+    <EmbeddedResource Include="QnA\AnswerBox\ShortEntryAnswerBox.resx">
+      <DependentUpon>ShortEntryAnswerBox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
