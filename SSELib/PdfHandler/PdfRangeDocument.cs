@@ -5,7 +5,7 @@ using System.Drawing.Printing;
 using System.IO;
 using PdfiumViewer;
 
-namespace SIMULAKRA
+namespace SSELib.PdfHandler
 {
     public class PdfRangeDocument : IPdfDocument
     {

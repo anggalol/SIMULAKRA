@@ -33,7 +33,7 @@ namespace SSELib.QnA.Question
         public string[,] OptionsText => new string[3, 2]
         {
             { "Benar", "Salah" },
-            { "Benar", "Salah" },
+            { "Saling Berkaitan", "Tidak Berkaitan" },
             { "Benar", "Salah" }
         };
 

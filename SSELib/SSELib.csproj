@@ -55,9 +55,6 @@
     <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
       <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
     </Reference>
-    <Reference Include="Polenter.SharpSerializer, Version=2.20.0.0, Culture=neutral, PublicKeyToken=8f4f20011571ee5f, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpSerializer.2.20\lib\net20\Polenter.SharpSerializer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -74,6 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomSerializationAttribute.cs" />
+    <Compile Include="InDevelopmentAttribute.cs" />
+    <Compile Include="PdfHandler\PdfRangeDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QnA\AKMSimulation.cs" />
     <Compile Include="QnA\AnswerBox\AnswerBoxElementSizeEnum.cs" />
@@ -81,6 +80,18 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="QnA\AnswerBox\AnswersChangedEvent.cs" />
+    <Compile Include="QnA\AnswerBox\CausalityAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QnA\AnswerBox\CausalityAnswerBox.Designer.cs">
+      <DependentUpon>CausalityAnswerBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QnA\AnswerBox\DropdownAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QnA\AnswerBox\DropdownAnswerBox.Designer.cs">
+      <DependentUpon>DropdownAnswerBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="QnA\AnswerBox\EssayAnswerBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,9 +122,21 @@
     <Compile Include="QnA\AnswerBox\ShortEntryAnswerBox.Designer.cs">
       <DependentUpon>ShortEntryAnswerBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="QnA\AnswerBox\TrueOrFalseAnswerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QnA\AnswerBox\TrueOrFalseAnswerBox.Designer.cs">
+      <DependentUpon>TrueOrFalseAnswerBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="QnA\Answer\AnswersCollection.cs" />
+    <Compile Include="QnA\Answer\CausalityAnswers.cs" />
+    <Compile Include="QnA\Answer\DropdownAnswers.cs" />
+    <Compile Include="QnA\Answer\EssayAnswers.cs" />
     <Compile Include="QnA\Answer\IAnswers.cs" />
     <Compile Include="QnA\Answer\MultipleAnswerAnswers.cs" />
+    <Compile Include="QnA\Answer\MultipleChoiceAnswers.cs" />
+    <Compile Include="QnA\Answer\ShortEntryAnswers.cs" />
+    <Compile Include="QnA\Answer\TrueOrFalseAnswers.cs" />
     <Compile Include="QnA\CustomSimulation.cs" />
     <Compile Include="QnA\InstanceFactory.cs" />
     <Compile Include="QnA\InvalidQuestionTypeException.cs" />
@@ -133,6 +156,15 @@
     <Compile Include="QnA\Question\Options.cs" />
     <Compile Include="QnA\Question\ShortEntryQuestion.cs" />
     <Compile Include="QnA\Question\TrueOrFalseQuestion.cs" />
+    <Compile Include="QnA\Scoring\CausalityScoring.cs" />
+    <Compile Include="QnA\Scoring\DropdownScoring.cs" />
+    <Compile Include="QnA\Scoring\EssayScoring.cs" />
+    <Compile Include="QnA\Scoring\IQuestionScore.cs" />
+    <Compile Include="QnA\Scoring\ISimulationScore.cs" />
+    <Compile Include="QnA\Scoring\MultipleAnswerScoring.cs" />
+    <Compile Include="QnA\Scoring\MultipleChoiceScoring.cs" />
+    <Compile Include="QnA\Scoring\ShortEntryScoring.cs" />
+    <Compile Include="QnA\Scoring\TrueOrFalseScoring.cs" />
     <Compile Include="QnA\SerializerHelper.cs" />
     <Compile Include="QnA\SimulationHeader.cs" />
     <Compile Include="QnA\SimulationTypeBundle.cs" />
@@ -144,6 +176,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="QnA\AnswerBox\CausalityAnswerBox.resx">
+      <DependentUpon>CausalityAnswerBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QnA\AnswerBox\DropdownAnswerBox.resx">
+      <DependentUpon>DropdownAnswerBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QnA\AnswerBox\EssayAnswerBox.resx">
       <DependentUpon>EssayAnswerBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QnA\AnswerBox\ShortEntryAnswerBox.resx">
       <DependentUpon>ShortEntryAnswerBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QnA\AnswerBox\TrueOrFalseAnswerBox.resx">
+      <DependentUpon>TrueOrFalseAnswerBox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

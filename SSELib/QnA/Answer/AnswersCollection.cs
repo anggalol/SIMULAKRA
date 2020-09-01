@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SSELib.QnA.Question;
 
 namespace SSELib.QnA.Answer

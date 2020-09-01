@@ -20,6 +20,9 @@ namespace SSELib.QnA.Answer
 
         string this[int id] { get; set; }
 
+
+        // int CurrentScore { get; set; }
+
         AnswerBoxUserControl AnswerBox { get; }
 
         MetroCheckBox DoubtCheckBox { get; }

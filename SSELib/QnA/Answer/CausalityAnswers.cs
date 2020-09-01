@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 using MetroFramework.Controls;
 using SSELib.QnA.AnswerBox;
 
 namespace SSELib.QnA.Answer
 {
-    public class MultipleAnswerAnswers : IAnswers
+    public class CausalityAnswers : IAnswers
     {
         private SortedList<int, string> _answerSL;
         private string[,] _text;
 
-        public MultipleAnswerAnswers()
+        public CausalityAnswers()
         {
             _answerSL = new SortedList<int, string>();
             AnswerBox = new MultipleAnswerAnswerBox();
@@ -24,7 +23,7 @@ namespace SSELib.QnA.Answer
 
         public IList<int> IDs => _answerSL.Keys;
 
-        public string DefaultAnswersValue => CheckState.Unchecked.ToString();
+        public string DefaultAnswersValue => string.Empty;
 
         [XmlIgnore]
         public string[,] OptionsText

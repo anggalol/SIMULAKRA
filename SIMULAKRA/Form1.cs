@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using PdfiumViewer;
 using MetroFramework.Forms;
 using Ionic.Zip;
-using SSELib.Question;
 using SSELib.QnA.Answer;
 
 namespace SIMULAKRA
