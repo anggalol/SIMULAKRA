@@ -25,6 +25,18 @@ namespace SSELib.QnA.Question
 
         public int Count => _questionSL.Count;
 
+        public float TotalScore
+        {
+            get
+            {
+                float totalScore = 0f;
+                foreach (int qid in IDs)
+                    totalScore += _questionSL[qid].Score;
+
+                return totalScore;
+            }
+        }
+
         public IQuestion this[int id]
         {
             get => _questionSL[id];

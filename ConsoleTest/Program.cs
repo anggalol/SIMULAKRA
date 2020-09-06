@@ -17,27 +17,13 @@ namespace ConsoleTest
         private static void Main()
         {
             // Tes kode disini
-            AnswerKeys ak = new AnswerKeys();
-            ak.Add(0, new Key("adfg"));
-            ak.Add(1, new Key("aaffg"));
-            ak.Add(2, new Key("adfafafg"));
-            ak.Add(3, new Key("fa"));
-            ak.Add(4, new Key("hodaufi "));
+            Bija biji = new Bija("ememfjaif", 123);
 
-            MultipleAnswerQuestion maq = new MultipleAnswerQuestion
-            {
-                AnswerOptions = new Options(5, 1),
-                AnswerKeys = ak,
-                UsingAudio = true,
-                OptionsText = new string[5, 1] { { "14" }, { "114" }, { "1af4" }, { "1asd a4" }, { "1fadf4" } },
-                Score = 123.74f
-            };
-
-            XmlSerializer ser = new XmlSerializer(typeof(MultipleAnswerQuestion));
-            TextWriter tw = new StreamWriter("D:\\finuiale.txt");
-            //FileStream fs = new FileStream("D:\\finuiale.txt", FileMode.Open);
-            ser.Serialize(tw, maq);
-            //MultipleAnswerQuestion res = (MultipleAnswerQuestion)ser.Deserialize(fs);
+            XmlSerializer serializer = new XmlSerializer(typeof(Bija));
+            TextWriter tw = new StreamWriter("D:\\ex.txt");
+            //FileStream fs = new FileStream("D:\\ex.txt", FileMode.Open);
+            //Bija res = (Bija)serializer.Deserialize(fs);
+            serializer.Serialize(tw, biji);
 
             #region Notifier
 
@@ -46,5 +32,24 @@ namespace ConsoleTest
 
             #endregion
         }
+    }
+
+    public class Bija
+    {
+        private Bija()
+        {
+        }
+
+        public Bija(string aks, int asd)
+        {
+            Aks = aks;
+            Asd = asd;
+        }
+
+        public string AAA => Aks;
+
+        public string Aks { get; private set; }
+
+        public int Asd { get; private set; }
     }
 }

@@ -17,7 +17,7 @@ namespace SSELib.QnA
 
         public bool RandomizeQuestion { get; set; }
 
-        public DateTime StartDateTime { get; set; }
+        public DateTime? StartDateTime { get; set; }
 
         public bool StartDateTimeDependent { get; set; }
 

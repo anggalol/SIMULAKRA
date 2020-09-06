@@ -160,7 +160,6 @@
     <Compile Include="QnA\Scoring\DropdownScoring.cs" />
     <Compile Include="QnA\Scoring\EssayScoring.cs" />
     <Compile Include="QnA\Scoring\IQuestionScore.cs" />
-    <Compile Include="QnA\Scoring\ISimulationScore.cs" />
     <Compile Include="QnA\Scoring\MultipleAnswerScoring.cs" />
     <Compile Include="QnA\Scoring\MultipleChoiceScoring.cs" />
     <Compile Include="QnA\Scoring\ShortEntryScoring.cs" />

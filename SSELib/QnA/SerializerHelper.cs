@@ -24,7 +24,7 @@ namespace SSELib.QnA
             writer.Close();
         }
 
-        public T Deserialize<T>() where T : class
+        public T Deserialize<T>()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
             FileStream stream = new FileStream(_filename, FileMode.Open);

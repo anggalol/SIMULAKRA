@@ -2,6 +2,7 @@
 using System.Xml.Serialization;
 using MetroFramework.Controls;
 using SSELib.QnA.AnswerBox;
+using SSELib.QnA.Scoring;
 
 namespace SSELib.QnA.Answer
 {
@@ -15,6 +16,7 @@ namespace SSELib.QnA.Answer
             _answerSL = new SortedList<int, string>();
             AnswerBox = new ShortEntryAnswerBox();
             DoubtCheckBox = new MetroCheckBox();
+            QuestionScore = new ShortEntryScoring();
         }
 
         public string this[int id]
@@ -45,6 +47,8 @@ namespace SSELib.QnA.Answer
         public AnswerBoxUserControl AnswerBox { get; }
 
         public MetroCheckBox DoubtCheckBox { get; }
+
+        public IQuestionScore QuestionScore { get; }
 
         public void Add(int id, string answer)
         {

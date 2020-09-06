@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using MetroFramework.Controls;
 using SSELib.QnA.AnswerBox;
+using SSELib.QnA.Scoring;
 
 namespace SSELib.QnA.Answer
 {
@@ -16,6 +17,7 @@ namespace SSELib.QnA.Answer
             _answerSL = new SortedList<int, string>();
             AnswerBox = new MultipleAnswerAnswerBox();
             DoubtCheckBox = new MetroCheckBox();
+            QuestionScore = new MultipleAnswerScoring();
         }
 
         public bool IsDoubt { get; set; }
@@ -40,6 +42,8 @@ namespace SSELib.QnA.Answer
         public AnswerBoxUserControl AnswerBox { get; }
 
         public MetroCheckBox DoubtCheckBox { get; }
+
+        public IQuestionScore QuestionScore { get; }
 
         public string this[int id]
         {

@@ -24,32 +24,26 @@ namespace SSELib.QnA.Answer
             set => _answersSL[id] = value;
         }
 
+        public float GetTotalScoreObtained(QuestionCollection qc)
+        {
+            float totalScore = 0f;
+            foreach (int qid in qc.IDs)
+                totalScore += _answersSL[qid].QuestionScore.CalculateScore(qc[qid], _answersSL[qid]);
+
+            return totalScore;
+        }
+
         public void GenerateDefaultAnswersData(QuestionCollection qc)
         {
             foreach (int questionID in qc.IDs)
             {
-                IAnswers answers = (IAnswers)SSELib.QnA.InstanceFactory.CreateInstance(qc[questionID].AnswersType);
+                IAnswers answers = (IAnswers)InstanceFactory.CreateInstance(qc[questionID].AnswersType);
                 answers.IsDoubt = false;
                 foreach (int answerID in qc[questionID].AnswerKeys.IDs)
                     answers.Add(answerID, answers.DefaultAnswersValue);
 
                 _answersSL.Add(questionID, answers);
             }
-        }
-
-        public bool Remove(int id)
-        {
-            return _answersSL.Remove(id);
-        }
-
-        public void RemoveAt(int index)
-        {
-            _answersSL.RemoveAt(index);
-        }
-
-        public void Clear()
-        {
-            _answersSL.Clear();
         }
 
         public bool TryGetAnswers(int id, out IAnswers answers)
@@ -75,11 +69,6 @@ namespace SSELib.QnA.Answer
         public int IndexOfAnswers(IAnswers answers)
         {
             return _answersSL.IndexOfValue(answers);
-        }
-
-        public void Add(int id, IAnswers answers)
-        {
-            _answersSL.Add(id, answers);
         }
     }
 }
